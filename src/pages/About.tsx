@@ -1,9 +1,22 @@
+import { useState, useEffect } from "react";
 import { Award, Users, Target, TrendingUp } from "lucide-react";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import workshopImage from "@/assets/workshop.jpg";
+import founderImage from "@/assets/founder.jpg";
+import teamImage from "@/assets/team.jpg";
 
 const About = () => {
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
+  const aboutImages = [workshopImage, founderImage, teamImage];
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentImageIndex((prev) => (prev + 1) % aboutImages.length);
+    }, 4000);
+    return () => clearInterval(interval);
+  }, []);
+
   return (
     <div className="min-h-screen">
       <Navigation />
@@ -26,11 +39,18 @@ const About = () => {
       <section className="py-16">
         <div className="container mx-auto px-4 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-            <div className="animate-fade-in-up">
-              <div 
-                className="aspect-video rounded-2xl bg-cover bg-center shadow-premium"
-                style={{ backgroundImage: `url(${workshopImage})` }}
-              />
+            <div className="animate-fade-in-up relative overflow-hidden rounded-2xl shadow-premium">
+              {aboutImages.map((image, index) => (
+                <div
+                  key={index}
+                  className={`aspect-video bg-cover bg-center transition-all duration-1000 ${
+                    index === currentImageIndex
+                      ? "opacity-100 scale-100"
+                      : "opacity-0 scale-110 absolute inset-0"
+                  }`}
+                  style={{ backgroundImage: `url(${image})` }}
+                />
+              ))}
             </div>
 
             <div className="space-y-6 animate-fade-in-up" style={{ animationDelay: "0.1s" }}>

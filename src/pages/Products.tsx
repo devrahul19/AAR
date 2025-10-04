@@ -5,6 +5,7 @@ import { Input } from "@/components/ui/input";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
+import ProductImageCarousel from "@/components/ProductImageCarousel";
 import productFlask from "@/assets/product-flask.jpg";
 import productCondenser from "@/assets/product-condenser.jpg";
 import productDistillation from "@/assets/product-distillation.jpg";
@@ -22,7 +23,7 @@ const Products = () => {
       category: "Flasks",
       capacity: "250ml - 5000ml",
       material: "Borosilicate Glass 3.3",
-      image: productFlask,
+      images: [productFlask, productFlask],
       specs: "Heat resistant up to 500°C",
     },
     {
@@ -31,7 +32,7 @@ const Products = () => {
       category: "Flasks",
       capacity: "100ml - 2000ml",
       material: "Borosilicate Glass 3.3",
-      image: productFlask,
+      images: [productFlask, productFlask],
       specs: "Narrow neck design",
     },
     {
@@ -40,7 +41,7 @@ const Products = () => {
       category: "Condensers",
       length: "200mm - 600mm",
       material: "Borosilicate Glass 3.3",
-      image: productCondenser,
+      images: [productCondenser, productCondenser, productCondenser],
       specs: "Straight tube design",
     },
     {
@@ -49,7 +50,7 @@ const Products = () => {
       category: "Condensers",
       length: "300mm - 500mm",
       material: "Borosilicate Glass 3.3",
-      image: productCondenser,
+      images: [productCondenser, productCondenser],
       specs: "Coil tube design",
     },
     {
@@ -58,7 +59,7 @@ const Products = () => {
       category: "Condensers",
       length: "300mm - 400mm",
       material: "Borosilicate Glass 3.3",
-      image: productCondenser,
+      images: [productCondenser, productCondenser],
       specs: "Bulb design for efficiency",
     },
     {
@@ -67,7 +68,7 @@ const Products = () => {
       category: "Distillation Units",
       capacity: "1L - 10L",
       material: "Borosilicate Glass 3.3",
-      image: productDistillation,
+      images: [productDistillation, productDistillation, productDistillation],
       specs: "Complete setup with accessories",
     },
     {
@@ -76,7 +77,7 @@ const Products = () => {
       category: "Distillation Units",
       length: "300mm - 1000mm",
       material: "Borosilicate Glass 3.3",
-      image: productDistillation,
+      images: [productDistillation, productDistillation],
       specs: "Multiple theoretical plates",
     },
     {
@@ -85,7 +86,7 @@ const Products = () => {
       category: "Distillation Units",
       capacity: "500ml - 5L",
       material: "Borosilicate Glass 3.3",
-      image: productDistillation,
+      images: [productDistillation, productDistillation],
       specs: "Includes vacuum adapter",
     },
     {
@@ -94,7 +95,7 @@ const Products = () => {
       category: "Flasks",
       capacity: "100ml - 5000ml",
       material: "Borosilicate Glass 3.3",
-      image: productFlask,
+      images: [productFlask, productFlask],
       specs: "Stable base design",
     },
   ];
@@ -169,14 +170,11 @@ const Products = () => {
                 style={{ animationDelay: `${index * 0.05}s` }}
               >
                 <CardHeader>
-                  <div className="aspect-square bg-gradient-to-br from-primary/5 to-secondary/5 rounded-xl overflow-hidden mb-4">
-                    <img 
-                      src={product.image} 
-                      alt={product.name}
-                      className="w-full h-full object-cover"
-                    />
-                  </div>
-                  <CardTitle className="text-xl">{product.name}</CardTitle>
+                  <ProductImageCarousel 
+                    images={product.images} 
+                    productName={product.name}
+                  />
+                  <CardTitle className="text-xl mt-4">{product.name}</CardTitle>
                   <div className="text-sm text-muted-foreground">{product.category}</div>
                 </CardHeader>
                 <CardContent className="space-y-2">

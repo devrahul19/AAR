@@ -2,9 +2,12 @@ import { Link } from "react-router-dom";
 import { ArrowRight, Beaker, Award, Sparkles, Users } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import heroImage from "@/assets/hero-glassmaking.jpg";
+import heroPrecision from "@/assets/hero-precision.jpg";
+import heroLaboratory from "@/assets/hero-laboratory.jpg";
 import productsHero from "@/assets/products-hero.jpg";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
+import HeroCarousel from "@/components/HeroCarousel";
 
 const Home = () => {
   return (
@@ -13,12 +16,12 @@ const Home = () => {
 
       {/* Hero Section */}
       <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20">
-        {/* Background Image with Overlay */}
-        <div 
-          className="absolute inset-0 bg-cover bg-center"
-          style={{ backgroundImage: `url(${heroImage})` }}
-        >
-          <div className="absolute inset-0 bg-gradient-to-r from-primary/95 via-primary/85 to-primary-dark/90" />
+        {/* Animated Background Carousel */}
+        <div className="absolute inset-0">
+          <HeroCarousel 
+            images={[heroImage, heroPrecision, heroLaboratory]} 
+            interval={6000}
+          />
         </div>
 
         {/* Content */}
