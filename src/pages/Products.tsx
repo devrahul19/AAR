@@ -5,6 +5,7 @@ import { Input } from "@/components/ui/input";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
+import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import ProductImageCarousel from "@/components/ProductImageCarousel";
 import productFlask from "@/assets/product-flask.jpg";
 import productCondenser from "@/assets/product-condenser.jpg";
@@ -13,6 +14,7 @@ import productDistillation from "@/assets/product-distillation.jpg";
 const Products = () => {
   const [selectedCategory, setSelectedCategory] = useState("All");
   const [searchQuery, setSearchQuery] = useState("");
+  const [selectedProduct, setSelectedProduct] = useState<typeof products[0] | null>(null);
 
   const categories = ["All", "Flasks", "Condensers", "Distillation Units"];
 
@@ -196,8 +198,12 @@ const Products = () => {
                   </div>
                 </CardContent>
                 <CardFooter>
-                  <Button variant="default" className="w-full">
-                    Request Quote
+                  <Button 
+                    variant="default" 
+                    className="w-full"
+                    onClick={() => setSelectedProduct(product)}
+                  >
+                    View Details
                   </Button>
                 </CardFooter>
               </Card>
@@ -229,6 +235,83 @@ const Products = () => {
           </Button>
         </div>
       </section>
+
+      {/* Product Details Dialog */}
+      <Dialog open={!!selectedProduct} onOpenChange={() => setSelectedProduct(null)}>
+        <DialogContent className="max-w-3xl max-h-[90vh] overflow-y-auto">
+          {selectedProduct && (
+            <>
+              <DialogHeader>
+                <DialogTitle className="text-2xl">{selectedProduct.name}</DialogTitle>
+                <DialogDescription className="text-base">
+                  {selectedProduct.category} • {selectedProduct.material}
+                </DialogDescription>
+              </DialogHeader>
+              
+              <div className="space-y-6 mt-4">
+                <div className="w-full">
+                  <ProductImageCarousel 
+                    images={selectedProduct.images} 
+                    productName={selectedProduct.name}
+                  />
+                </div>
+
+                <div className="grid gap-4">
+                  <div className="border-b border-border pb-4">
+                    <h3 className="font-semibold text-lg mb-2">Specifications</h3>
+                    <div className="space-y-2">
+                      <div className="flex justify-between">
+                        <span className="text-muted-foreground">Material:</span>
+                        <span className="font-medium">{selectedProduct.material}</span>
+                      </div>
+                      <div className="flex justify-between">
+                        <span className="text-muted-foreground">
+                          {selectedProduct.capacity ? "Capacity:" : "Length:"}
+                        </span>
+                        <span className="font-medium">
+                          {selectedProduct.capacity || selectedProduct.length}
+                        </span>
+                      </div>
+                      <div className="flex justify-between">
+                        <span className="text-muted-foreground">Features:</span>
+                        <span className="font-medium">{selectedProduct.specs}</span>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className="border-b border-border pb-4">
+                    <h3 className="font-semibold text-lg mb-2">Description</h3>
+                    <p className="text-muted-foreground">
+                      Premium {selectedProduct.name} crafted from high-quality {selectedProduct.material}. 
+                      Perfect for laboratory and industrial applications requiring precision and durability. 
+                      Each piece is manufactured to exact specifications with rigorous quality control.
+                    </p>
+                  </div>
+
+                  <div>
+                    <h3 className="font-semibold text-lg mb-2">Applications</h3>
+                    <ul className="list-disc list-inside space-y-1 text-muted-foreground">
+                      <li>Research laboratories</li>
+                      <li>Chemical synthesis</li>
+                      <li>Educational institutions</li>
+                      <li>Industrial processes</li>
+                    </ul>
+                  </div>
+                </div>
+
+                <div className="flex gap-3 pt-4">
+                  <Button className="flex-1" size="lg">
+                    Request Quote
+                  </Button>
+                  <Button variant="outline" className="flex-1" size="lg">
+                    Contact Us
+                  </Button>
+                </div>
+              </div>
+            </>
+          )}
+        </DialogContent>
+      </Dialog>
 
       <Footer />
     </div>
