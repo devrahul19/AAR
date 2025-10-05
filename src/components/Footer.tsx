@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import { Beaker, Mail, Phone, MapPin, Facebook, Linkedin, Twitter } from "lucide-react";
+import logo from "@/assets/logo.png";
 
 const Footer = () => {
   return (
@@ -9,16 +10,16 @@ const Footer = () => {
           {/* Company Info */}
           <div className="space-y-4">
             <div className="flex items-center gap-2">
-              <div className="w-10 h-10 bg-secondary rounded-lg flex items-center justify-center">
-                <Beaker className="w-6 h-6 text-white" />
+              <div className="w-10 h-10 bg-white rounded-lg flex items-center justify-center">
+              <img src={logo} alt="AAR Logo" className="w-6 h-6" />
               </div>
               <div>
                 <h3 className="font-bold text-lg">AAR Scientific</h3>
-                <p className="text-xs text-primary-foreground/80">Industry Excellence</p>
+                <p className="text-xs text-primary-foreground/80">Industry</p>
               </div>
             </div>
             <p className="text-sm text-primary-foreground/80">
-              40+ years of expertise in precision scientific glassmaking. Crafting excellence in every detail.
+              Nearly six decades of excellence in manufacturing premium laboratory glassware and scientific instruments. Trusted by educational institutions worldwide.
             </p>
           </div>
 
@@ -58,10 +59,11 @@ const Footer = () => {
           <div>
             <h4 className="font-semibold text-lg mb-4">Products</h4>
             <ul className="space-y-2">
-              <li className="text-sm text-primary-foreground/80">Laboratory Flasks</li>
-              <li className="text-sm text-primary-foreground/80">Condensers</li>
-              <li className="text-sm text-primary-foreground/80">Distillation Units</li>
-              <li className="text-sm text-primary-foreground/80">Custom Glassware</li>
+              <li className="text-sm text-primary-foreground/80">Test Tubes & Culture Tubes</li>
+              <li className="text-sm text-primary-foreground/80">Beakers & Volumetric Flasks</li>
+              <li className="text-sm text-primary-foreground/80">Distillation Apparatus</li>
+              <li className="text-sm text-primary-foreground/80">Water & Glass Stills</li>
+              <li className="text-sm text-primary-foreground/80">Laboratory Equipment</li>
             </ul>
           </div>
 
@@ -71,15 +73,15 @@ const Footer = () => {
             <ul className="space-y-3">
               <li className="flex items-start gap-2 text-sm text-primary-foreground/80">
                 <Mail className="w-4 h-4 mt-0.5 flex-shrink-0" />
-                <span>info@aarscientific.com</span>
+                <span>aarscind@gmail.com</span>
               </li>
               <li className="flex items-start gap-2 text-sm text-primary-foreground/80">
                 <Phone className="w-4 h-4 mt-0.5 flex-shrink-0" />
-                <span>+1 (555) 123-4567</span>
+                <span>+91 90340 02949</span>
               </li>
               <li className="flex items-start gap-2 text-sm text-primary-foreground/80">
                 <MapPin className="w-4 h-4 mt-0.5 flex-shrink-0" />
-                <span>123 Science Park, Innovation District</span>
+                <span>2288, Kacha Bazar, Sadar Bazar, Ambala Cantt, Haryana 133001</span>
               </li>
             </ul>
             
@@ -101,7 +103,7 @@ const Footer = () => {
         {/* Bottom Bar */}
         <div className="border-t border-primary-foreground/10 mt-8 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
           <p className="text-sm text-primary-foreground/60">
-            © {new Date().getFullYear()} AAR Scientific Industry. All rights reserved.
+            © {new Date().getFullYear()} AAR Scientific Industry (Est. 1965). All rights reserved.
           </p>
           <div className="flex gap-6 text-sm text-primary-foreground/60">
             <a href="#" className="hover:text-secondary transition-colors">Privacy Policy</a>

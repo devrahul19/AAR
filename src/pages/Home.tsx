@@ -5,6 +5,9 @@ import heroImage from "@/assets/hero-glassmaking.jpg";
 import heroPrecision from "@/assets/hero-precision.jpg";
 import heroLaboratory from "@/assets/hero-laboratory.jpg";
 import productsHero from "@/assets/products-hero.jpg";
+import tubesImage from "@/assets/Tubes.jpg";
+import distillersImage from "@/assets/Distillers.jpg";
+import labBurnersImage from "@/assets/lab burners.jpg";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import HeroCarousel from "@/components/HeroCarousel";
@@ -29,15 +32,15 @@ const Home = () => {
           <div className="max-w-4xl animate-fade-in-up">
             <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-secondary/20 border border-secondary/30 backdrop-blur-sm mb-8">
               <Sparkles className="w-4 h-4 text-secondary-light" />
-              <span className="text-sm font-medium text-white">40+ Years of Excellence</span>
+              <span className="text-sm font-medium text-white">Established in 1965</span>
             </div>
             
             <h1 className="text-5xl md:text-7xl font-bold text-white mb-6 leading-tight">
-              Blending Tradition with Technology
+              Premier Manufacturers of Laboratory Glassware
             </h1>
             
             <p className="text-xl md:text-2xl text-white/90 mb-8 max-w-2xl">
-              Precision-crafted scientific glassware where artisanal craftsmanship meets cutting-edge innovation.
+              Serving schools, colleges, universities & research institutions with high-quality scientific glassware and instruments since 1965.
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4">
@@ -61,9 +64,9 @@ const Home = () => {
           <div className="container mx-auto px-4 lg:px-8">
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-4xl">
               {[
-                { icon: Award, label: "40+ Years", desc: "Experience" },
-                { icon: Beaker, label: "1000+", desc: "Products" },
-                { icon: Users, label: "500+", desc: "Clients" },
+                { icon: Award, label: "20+ Years", desc: "Experience" },
+                { icon: Beaker, label: "10000+", desc: "Products Sold" },
+                { icon: Users, label: "100+", desc: "Clients Satified" },
                 { icon: Sparkles, label: "100%", desc: "Quality" },
               ].map((stat, index) => (
                 <div
@@ -89,26 +92,26 @@ const Home = () => {
               Why Choose AAR Scientific?
             </h2>
             <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-              Precision craftsmanship backed by decades of expertise
+              Trusted by educational institutions since 1965
             </p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {[
               {
-                title: "Precision Engineering",
-                desc: "Every piece crafted to exact specifications with microscopic accuracy",
-                icon: "⚙️",
+                title: "Comprehensive Range",
+                desc: "From basic labware to specialized research equipment, all under one roof",
+                icon: "🔬",
               },
               {
-                title: "Quality Materials",
-                desc: "Premium borosilicate glass ensuring durability and heat resistance",
-                icon: "💎",
+                title: "Timely Delivery",
+                desc: "Prompt supplies and reliable service for all your laboratory needs",
+                icon: "⚡",
               },
               {
-                title: "Custom Solutions",
-                desc: "Tailored designs to meet your unique laboratory requirements",
-                icon: "🎯",
+                title: "Educational Focus",
+                desc: "Specialized in serving schools, colleges, and research institutions",
+                icon: "�",
               },
             ].map((feature, index) => (
               <div
@@ -137,27 +140,49 @@ const Home = () => {
         <div className="relative container mx-auto px-4 lg:px-8">
           <div className="text-center mb-16 animate-fade-in-up">
             <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-4">
-              Our Product Range
+              Comprehensive Product Range
             </h2>
             <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-              From standard laboratory equipment to custom-designed solutions
+              Complete range of laboratory glassware and scientific instruments
             </p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
             {[
-              { name: "Laboratory Flasks", desc: "Round bottom, flat bottom, and Erlenmeyer flasks" },
-              { name: "Condensers", desc: "Liebig, Graham, and Allihn condensers" },
-              { name: "Distillation Units", desc: "Complete distillation apparatus and accessories" },
+              { name: "Essential Labware", desc: "Test tubes, beakers, measuring cylinders, pipettes, and volumetric flasks" },
+              { name: "Specialized Equipment", desc: "Water distillers, NPL distillation apparatus, and Soxhlet apparatus" },
+              { name: "Research Instruments", desc: "Desiccators, filter apparatus, interchangeable joints up to 5000/10000ml" },
             ].map((product, index) => (
               <div
                 key={index}
                 className="glass-card p-6 hover-lift animate-fade-in-up"
                 style={{ animationDelay: `${index * 0.1}s` }}
               >
-                <div className="aspect-square bg-gradient-to-br from-primary/5 to-secondary/5 rounded-xl mb-4 flex items-center justify-center">
-                  <Beaker className="w-16 h-16 text-secondary" />
-                </div>
+                {index === 0 ? (
+                  <div className="aspect-square rounded-xl mb-4 overflow-hidden">
+                    <img 
+                      src={tubesImage} 
+                      alt="Essential Labware"
+                      className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
+                    />
+                  </div>
+                ) : index === 1 ? (
+                  <div className="aspect-square rounded-xl mb-4 overflow-hidden">
+                    <img 
+                      src={distillersImage} 
+                      alt="Specialized Equipment"
+                      className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
+                    />
+                  </div>
+                ) : (
+                  <div className="aspect-square rounded-xl mb-4 overflow-hidden">
+                    <img 
+                      src={labBurnersImage} 
+                      alt="Research Instruments"
+                      className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
+                    />
+                  </div>
+                )}
                 <h3 className="text-xl font-semibold text-foreground mb-2">{product.name}</h3>
                 <p className="text-muted-foreground text-sm">{product.desc}</p>
               </div>
@@ -186,10 +211,10 @@ const Home = () => {
         
         <div className="relative container mx-auto px-4 lg:px-8 text-center">
           <h2 className="text-4xl md:text-5xl font-bold mb-6 animate-fade-in-up">
-            Ready to Get Started?
+            Equip Your Laboratory
           </h2>
           <p className="text-xl text-white/90 mb-8 max-w-2xl mx-auto animate-fade-in-up">
-            Request a custom quote or speak with our experts about your laboratory needs
+            Get in touch for all your scientific glassware and laboratory equipment needs
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center animate-fade-in">
             <Link to="/custom-orders">

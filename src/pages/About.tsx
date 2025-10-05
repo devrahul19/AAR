@@ -4,18 +4,31 @@ import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import workshopImage from "@/assets/workshop.jpg";
 import founderImage from "@/assets/founder.jpg";
-import teamImage from "@/assets/team.jpg";
+import videoImage from "@/assets/video1.mp4";
 
 const About = () => {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
-  const aboutImages = [workshopImage, founderImage, teamImage];
+  const aboutImages = [workshopImage, founderImage, videoImage];
 
   useEffect(() => {
-    const interval = setInterval(() => {
+    let timeoutId: NodeJS.Timeout;
+    
+    const moveToNextSlide = () => {
       setCurrentImageIndex((prev) => (prev + 1) % aboutImages.length);
-    }, 4000);
-    return () => clearInterval(interval);
-  }, []);
+    };
+
+    if (aboutImages[currentImageIndex] === videoImage) {
+      // For video, wait for 3 seconds
+      timeoutId = setTimeout(moveToNextSlide, 3000);
+    } else {
+      // For images, wait for 4 seconds
+      timeoutId = setTimeout(moveToNextSlide, 4000);
+    }
+
+    return () => {
+      if (timeoutId) clearTimeout(timeoutId);
+    };
+  }, [currentImageIndex]);
 
   return (
     <div className="min-h-screen">
@@ -26,10 +39,10 @@ const About = () => {
         <div className="container mx-auto px-4 lg:px-8">
           <div className="max-w-3xl animate-fade-in-up">
             <h1 className="text-4xl md:text-6xl font-bold text-foreground mb-6">
-              Our Story
+              Our Legacy Since 1965
             </h1>
             <p className="text-lg text-muted-foreground">
-              Four decades of dedication to precision, quality, and innovation in scientific glassmaking.
+              Nearly six decades of excellence in manufacturing premium laboratory glassware and scientific instruments.
             </p>
           </div>
         </div>
@@ -40,39 +53,53 @@ const About = () => {
         <div className="container mx-auto px-4 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div className="animate-fade-in-up relative overflow-hidden rounded-2xl shadow-premium">
-              {aboutImages.map((image, index) => (
+              {aboutImages.map((media, index) => (
                 <div
                   key={index}
-                  className={`aspect-video bg-cover bg-center transition-all duration-1000 ${
+                  className={`aspect-video transition-all duration-1000 ${
                     index === currentImageIndex
                       ? "opacity-100 scale-100"
                       : "opacity-0 scale-110 absolute inset-0"
                   }`}
-                  style={{ backgroundImage: `url(${image})` }}
-                />
+                >
+                  {media === videoImage ? (
+                    <video
+                      className="w-full h-full object-cover"
+                      src={media}
+                      autoPlay
+                      muted
+                      playsInline
+                    />
+                  ) : (
+                    <div
+                      className="w-full h-full bg-cover bg-center"
+                      style={{ backgroundImage: `url(${media})` }}
+                    />
+                  )}
+                </div>
               ))}
             </div>
 
             <div className="space-y-6 animate-fade-in-up" style={{ animationDelay: "0.1s" }}>
               <h2 className="text-3xl md:text-4xl font-bold text-foreground">
-                Crafting Excellence Since 1984
+                Excellence in Scientific Glassware Since 1965
               </h2>
               <p className="text-muted-foreground leading-relaxed">
-                AAR Scientific Industry was founded with a singular vision: to bridge the gap between traditional
-                glassmaking craftsmanship and modern scientific precision. What began as a small workshop has grown
-                into a leading manufacturer of scientific glassware, trusted by laboratories worldwide.
+                Established in 1965, The Surindra Sc. Glassware co., now known as AAR Scientific Industry, is a leading manufacturer,
+                exporter & supplier of laboratory glassware and scientific instruments. We serve schools, colleges, universities
+                & research institutions worldwide with our comprehensive range of high-quality products.
               </p>
               <p className="text-muted-foreground leading-relaxed">
-                Our journey has been defined by an unwavering commitment to quality, innovation, and customer
-                satisfaction. Each piece we create represents the perfect marriage of time-honored techniques and
-                cutting-edge technology.
+                Over the decades, we have built our reputation through prompt supplies, timely deliveries, and exceptional quality.
+                Our extensive product range makes us a one-stop shop for all scientific, laboratory, and research equipment requirements.
+                From basic laboratory essentials to specialized research apparatus, we deliver excellence in every piece we craft.
               </p>
               <div className="grid grid-cols-2 gap-4 pt-4">
                 {[
-                  { value: "40+", label: "Years Experience" },
-                  { value: "500+", label: "Happy Clients" },
-                  { value: "1000+", label: "Products" },
-                  { value: "100%", label: "Quality Guaranteed" },
+                  { value: "20+ Years", label: "Experience" },
+                  { value: "10000+", label: "Products Sold" },
+                  { value: "100+", label: "Clients Satified" },
+                  { value: "100%", label: "Quality" },
                 ].map((stat, index) => (
                   <div key={index} className="glass-card p-4 text-center">
                     <div className="text-3xl font-bold text-secondary mb-1">{stat.value}</div>
@@ -101,23 +128,23 @@ const About = () => {
             {[
               {
                 icon: Award,
-                title: "Quality First",
-                desc: "Every piece undergoes rigorous quality control to meet the highest standards.",
+                title: "Premium Quality",
+                desc: "Ensuring excellence in every product, from basic glassware to sophisticated apparatus.",
               },
               {
                 icon: Users,
-                title: "Customer Focus",
-                desc: "Your satisfaction and success are our top priorities in everything we do.",
+                title: "Educational Focus",
+                desc: "Dedicated to serving schools, colleges, universities, and research institutions.",
               },
               {
                 icon: Target,
-                title: "Precision",
-                desc: "Microscopic accuracy in every measurement, every time, without compromise.",
+                title: "Comprehensive Range",
+                desc: "One-stop solution for all laboratory glassware and scientific instrument needs.",
               },
               {
                 icon: TrendingUp,
-                title: "Innovation",
-                desc: "Constantly evolving our techniques while honoring traditional craftsmanship.",
+                title: "Timely Delivery",
+                desc: "Committed to prompt supplies and reliable service for all our customers.",
               },
             ].map((value, index) => (
               <div
@@ -151,29 +178,29 @@ const About = () => {
           <div className="max-w-4xl mx-auto space-y-8">
             {[
               {
-                year: "1984",
-                title: "The Beginning",
-                desc: "Founded as a small workshop with a focus on precision glassmaking for local laboratories.",
+                year: "1965",
+                title: "The Foundation",
+                desc: "Established as The Surindra Sc. Glassware co., focusing on laboratory glassware manufacturing.",
+              },
+              {
+                year: "1980",
+                title: "Product Range Expansion",
+                desc: "Expanded our product line to include comprehensive scientific instruments and educational materials.",
               },
               {
                 year: "1995",
-                title: "Expansion",
-                desc: "Expanded operations and introduced computer-aided design for custom glassware production.",
+                title: "Market Leadership",
+                desc: "Became a leading supplier for schools, colleges, and research institutions across the region.",
               },
               {
-                year: "2005",
-                title: "International Recognition",
-                desc: "Achieved ISO certification and began exporting to laboratories across three continents.",
+                year: "2010",
+                title: "Manufacturing Excellence",
+                desc: "Modernized facilities with advanced manufacturing capabilities for precision glassware production.",
               },
               {
-                year: "2015",
-                title: "Technology Integration",
-                desc: "Integrated advanced manufacturing technologies while maintaining artisanal quality standards.",
-              },
-              {
-                year: "2024",
-                title: "Innovation Leader",
-                desc: "Recognized as an industry leader in custom scientific glassware with 500+ satisfied clients.",
+                year: "2025",
+                title: "Global Presence",
+                desc: "Established as AAR Scientific Industry, serving educational and research institutions worldwide.",
               },
             ].map((milestone, index) => (
               <div
@@ -199,28 +226,28 @@ const About = () => {
       {/* Founder Message */}
       <section className="py-16 bg-gradient-to-r from-primary to-primary-dark text-white relative overflow-hidden">
         <div className="absolute inset-0 opacity-10">
-          <div className="absolute inset-0" style={{ 
+          <div className="absolute inset-0" style={{
             backgroundImage: 'radial-gradient(circle at 2px 2px, white 1px, transparent 0)',
             backgroundSize: '40px 40px'
           }} />
         </div>
-        
+
         <div className="relative container mx-auto px-4 lg:px-8">
           <div className="max-w-4xl mx-auto text-center animate-fade-in-up">
             <div className="w-24 h-24 bg-white/10 backdrop-blur-md rounded-full mx-auto mb-6 flex items-center justify-center text-6xl">
               👨‍🔬
             </div>
             <h2 className="text-3xl md:text-4xl font-bold mb-6">
-              A Message from Our Founder
+              A Message from Our Team
             </h2>
             <blockquote className="text-xl text-white/90 leading-relaxed italic mb-6">
-              "Quality is not an act, it is a habit. For over four decades, we have dedicated ourselves to the
-              pursuit of perfection in every piece of glassware we create. Our commitment to excellence, precision,
-              and innovation remains as strong today as it was in 1984. Thank you for trusting us with your
-              scientific endeavors."
+              "Since 1965, we have been at the forefront of manufacturing premium laboratory glassware and scientific instruments.
+              Our comprehensive range includes everything from basic test tubes to sophisticated distillation apparatus.
+              We take pride in our ability to serve as a one-stop solution for all laboratory and research equipment needs,
+              maintaining the highest standards of quality and reliability in every product we deliver."
             </blockquote>
-            <p className="text-lg font-semibold">Dr. Rajesh Kumar</p>
-            <p className="text-white/70">Founder & Chief Craftsman</p>
+            <p className="text-lg font-semibold">Rajinder Dhiman</p>
+            <p className="text-white/70">AAR Scientific Industry</p>
           </div>
         </div>
       </section>

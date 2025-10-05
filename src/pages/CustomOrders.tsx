@@ -59,7 +59,7 @@ const CustomOrders = () => {
         <div className="container mx-auto px-4 lg:px-8">
           <div className="max-w-3xl animate-fade-in-up">
             <h1 className="text-4xl md:text-6xl font-bold text-foreground mb-6">
-              Custom Orders
+              Create Quotation
             </h1>
             <p className="text-lg text-muted-foreground">
               Have specific requirements? We manufacture custom scientific glassware tailored to
@@ -78,7 +78,7 @@ const CustomOrders = () => {
             <div className="animate-fade-in-up">
               <div className="glass-card p-8">
                 <h2 className="text-2xl font-bold text-foreground mb-6">
-                  Submit Your Custom Order
+                  Submit Your Quoatation
                 </h2>
 
                 <form onSubmit={handleSubmit} className="space-y-6">

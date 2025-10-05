@@ -65,7 +65,7 @@ const HeroCarousel = ({ images, interval = 5000 }: HeroCarouselProps) => {
       {/* Overlay */}
       <div className="absolute inset-0 bg-gradient-to-r from-primary/95 via-primary/85 to-primary-dark/90" />
 
-      {/* Navigation Buttons */}
+      {/* Navigation Buttons
       <div className="absolute inset-0 flex items-center justify-between px-4 lg:px-8 pointer-events-none">
         <Button
           variant="ghost"
@@ -85,10 +85,9 @@ const HeroCarousel = ({ images, interval = 5000 }: HeroCarouselProps) => {
         >
           <ChevronRight className="w-6 h-6" />
         </Button>
-      </div>
+      </div> */}
 
-      {/* Dots Indicator */}
-      <div className="absolute bottom-8 left-0 right-0 flex justify-center gap-2 pointer-events-none">
+      {/* <div className="absolute bottom-8 left-0 right-0 flex justify-center gap-2 pointer-events-none">
         {images.map((_, index) => (
           <button
             key={index}
@@ -101,7 +100,7 @@ const HeroCarousel = ({ images, interval = 5000 }: HeroCarouselProps) => {
             aria-label={`Go to slide ${index + 1}`}
           />
         ))}
-      </div>
+      </div> */}
     </div>
   );
 };

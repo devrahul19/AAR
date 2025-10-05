@@ -38,7 +38,7 @@ const Contact = () => {
     }, 1500);
   };
 
-  const whatsappNumber = "+15551234567";
+  const whatsappNumber = "+919034002949";
   const whatsappMessage = "Hello! I'm interested in learning more about your products.";
 
   return (
@@ -51,7 +51,7 @@ const Contact = () => {
           <div className="max-w-3xl animate-fade-in-up">
             <h1 className="text-4xl md:text-6xl font-bold text-foreground mb-6">Get In Touch</h1>
             <p className="text-lg text-muted-foreground">
-              Have questions about our products or services? Our team of experts is here to help.
+              Have questions about our products or services? We are here to help.
               Reach out through any of the channels below.
             </p>
           </div>
@@ -67,22 +67,22 @@ const Contact = () => {
               {
                 icon: Mail,
                 title: "Email Us",
-                content: "info@aarscientific.com",
+                content: "aarscind@gmail.com",
                 subtext: "Response within 24 hours",
-                href: "mailto:info@aarscientific.com",
+                href: "mailto:aarscind@gmail.com",
               },
               {
                 icon: Phone,
                 title: "Call Us",
-                content: "+1 (555) 123-4567",
-                subtext: "Mon-Fri, 9AM-6PM EST",
-                href: "tel:+15551234567",
+                content: "+919034002949",
+                subtext: "Mon-Sat, 9AM-8PM IST",
+                href: "tel:+919034002949",
               },
               {
                 icon: MapPin,
                 title: "Visit Us",
-                content: "123 Science Park",
-                subtext: "Innovation District",
+                content: "2288, Kacha Bazar, Sadar Bazar, Ambala Cantt",
+                subtext: "Ambala, Haryana 133001",
                 href: "#map",
               },
             ].map((item, index) => (
@@ -192,7 +192,7 @@ const Contact = () => {
               {/* Map */}
               <div id="map" className="glass-card p-4 aspect-video">
                 <iframe
-                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3022.1841494659913!2d-73.98784168459395!3d40.758896979326466!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c25855c6480299%3A0x55194ec5a1ae072e!2sTimes%20Square!5e0!3m2!1sen!2sus!4v1234567890123!5m2!1sen!2sus"
+                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d4317.905516807634!2d76.8413220762418!3d30.334937704747613!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390fb7d24e988fc9%3A0x5f5c72bbe68e55ad!2sAAR%20SCIENTIFIC%20INDUSTRY!5e1!3m2!1sen!2sin!4v1759648982296!5m2!1sen!2sin"
                   width="100%"
                   height="100%"
                   style={{ border: 0, borderRadius: "0.75rem" }}
@@ -208,8 +208,8 @@ const Contact = () => {
                 <h3 className="text-xl font-bold text-foreground mb-4">Business Hours</h3>
                 <div className="space-y-2">
                   {[
-                    { day: "Monday - Friday", hours: "9:00 AM - 6:00 PM" },
-                    { day: "Saturday", hours: "10:00 AM - 4:00 PM" },
+                    { day: "Monday - Friday", hours: "9:00 AM - 8:00 PM" },
+                    { day: "Saturday", hours: "10:00 AM - 7:00 PM" },
                     { day: "Sunday", hours: "Closed" },
                   ].map((item, index) => (
                     <div key={index} className="flex justify-between items-center py-2 border-b border-border/50 last:border-0">
@@ -228,7 +228,7 @@ const Contact = () => {
                 </p>
                 <div className="flex gap-3">
                   <Button variant="default" size="sm" asChild>
-                    <a href="tel:+15551234567">Call Now</a>
+                    <a href="tel:+919034002949">Call Now</a>
                   </Button>
                   <Button variant="secondary" size="sm" asChild>
                     <a
